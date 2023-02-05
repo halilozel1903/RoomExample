@@ -20,5 +20,8 @@ interface PersonDao {
     suspend fun randomPerson(): List<Person>
 
     @Query("SELECT * FROM person WHERE person_name like '%' || :searchName || '%'")
-    suspend fun searchPerson(searchName:String): List<Person>
+    suspend fun searchPerson(searchName: String): List<Person>
+
+    @Query("SELECT * FROM person WHERE person_id=:person_id")
+    suspend fun getPerson(person_id: Int): Person
 }

@@ -18,7 +18,8 @@ class MainActivity : AppCompatActivity() {
         personDatabase = PersonDatabase.accessToDatabase(this)!!
         personDao = personDatabase.getPersonDao()
 
-        searchPerson()
+        getOnePerson()
+        // searchPerson()
         // getRandomPerson()
         // deletePerson()
         // insertPerson()
@@ -80,6 +81,15 @@ class MainActivity : AppCompatActivity() {
                 Log.e("Person Name", person.person_name)
                 Log.e("Person Age",person.person_age.toString())
             }
+        }
+    }
+
+    private fun getOnePerson(){
+        CoroutineScope(Dispatchers.Main).launch {
+            val person = personDao.getPerson(11)
+            Log.e("Person ID", person.person_id.toString())
+            Log.e("Person Name", person.person_name)
+            Log.e("Person Age", person.person_age.toString())
         }
     }
 }
