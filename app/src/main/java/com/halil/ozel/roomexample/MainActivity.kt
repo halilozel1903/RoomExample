@@ -18,7 +18,8 @@ class MainActivity : AppCompatActivity() {
         personDatabase = PersonDatabase.accessToDatabase(this)!!
         personDao = personDatabase.getPersonDao()
 
-        getOnePerson()
+        controlPerson()
+        // getOnePerson()
         // searchPerson()
         // getRandomPerson()
         // deletePerson()
@@ -90,6 +91,13 @@ class MainActivity : AppCompatActivity() {
             Log.e("Person ID", person.person_id.toString())
             Log.e("Person Name", person.person_name)
             Log.e("Person Age", person.person_age.toString())
+        }
+    }
+
+    private fun controlPerson(){
+        CoroutineScope(Dispatchers.Main).launch {
+            val size = personDao.controlPerson("Taylor Swift")
+            Log.e("Person Size: ", size.toString())
         }
     }
 }
