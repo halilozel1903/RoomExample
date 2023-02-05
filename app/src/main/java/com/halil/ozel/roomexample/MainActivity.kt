@@ -18,16 +18,16 @@ class MainActivity : AppCompatActivity() {
         personDatabase = PersonDatabase.accessToDatabase(this)!!
         personDao = personDatabase.getPersonDao()
 
-        deletePerson()
+        getRandomPerson()
+        // deletePerson()
         // insertPerson()
         // updatePerson()
-        getPerson()
+        // getPerson()
     }
 
     private fun getPerson(){
         CoroutineScope(Dispatchers.Main).launch {
             val list = personDao.allPerson()
-
 
             for (person in list){
                 Log.e("Person ID",person.person_id.toString())
@@ -55,6 +55,18 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             val deletePerson = Person(13,"",0)
             personDao.deletePerson(deletePerson)
+        }
+    }
+
+    private fun getRandomPerson(){
+        CoroutineScope(Dispatchers.Main).launch {
+            val list = personDao.randomPerson()
+
+            for (person in list){
+                Log.e("Person ID",person.person_id.toString())
+                Log.e("Person Name", person.person_name)
+                Log.e("Person Age",person.person_age.toString())
+            }
         }
     }
 }

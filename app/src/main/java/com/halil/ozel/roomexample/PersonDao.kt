@@ -15,4 +15,7 @@ interface PersonDao {
 
     @Delete
     suspend fun deletePerson(person: Person)
+
+    @Query("SELECT * FROM person ORDER BY RANDOM() LIMIT 3")
+    suspend fun randomPerson(): List<Person>
 }
