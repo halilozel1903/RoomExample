@@ -3,6 +3,7 @@ package com.halil.ozel.roomexample
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 
 @Dao
 interface PersonDao {
@@ -11,4 +12,7 @@ interface PersonDao {
 
     @Insert
     suspend fun insertPerson(person: Person)
+
+    @Update
+    suspend fun updatePerson(person: Person)
 }

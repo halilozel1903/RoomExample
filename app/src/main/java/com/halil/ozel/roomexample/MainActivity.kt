@@ -19,6 +19,7 @@ class MainActivity : AppCompatActivity() {
         personDao = personDatabase.getPersonDao()
 
         // insertPerson()
+        updatePerson()
         getPerson()
     }
 
@@ -39,6 +40,13 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             val newPerson = Person(0,"Hannah Waddingham",48)
             personDao.insertPerson(newPerson)
+        }
+    }
+
+    private fun updatePerson(){
+        CoroutineScope(Dispatchers.Main).launch {
+            val newPerson = Person(12,"Hilary Duff",35)
+            personDao.updatePerson(newPerson)
         }
     }
 }
