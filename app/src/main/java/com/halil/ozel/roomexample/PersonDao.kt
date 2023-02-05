@@ -18,4 +18,7 @@ interface PersonDao {
 
     @Query("SELECT * FROM person ORDER BY RANDOM() LIMIT 3")
     suspend fun randomPerson(): List<Person>
+
+    @Query("SELECT * FROM person WHERE person_name like '%' || :searchName || '%'")
+    suspend fun searchPerson(searchName:String): List<Person>
 }
