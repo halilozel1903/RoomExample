@@ -18,8 +18,9 @@ class MainActivity : AppCompatActivity() {
         personDatabase = PersonDatabase.accessToDatabase(this)!!
         personDao = personDatabase.getPersonDao()
 
+        deletePerson()
         // insertPerson()
-        updatePerson()
+        // updatePerson()
         getPerson()
     }
 
@@ -47,6 +48,13 @@ class MainActivity : AppCompatActivity() {
         CoroutineScope(Dispatchers.Main).launch {
             val newPerson = Person(12,"Hilary Duff",35)
             personDao.updatePerson(newPerson)
+        }
+    }
+
+    private fun deletePerson(){
+        CoroutineScope(Dispatchers.Main).launch {
+            val deletePerson = Person(13,"",0)
+            personDao.deletePerson(deletePerson)
         }
     }
 }
