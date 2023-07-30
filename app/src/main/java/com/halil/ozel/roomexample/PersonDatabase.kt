@@ -10,7 +10,7 @@ abstract class PersonDatabase: RoomDatabase() {
     abstract fun getPersonDao(): PersonDao
 
     companion object {
-        var INSTANCE: PersonDatabase? = null
+        private var INSTANCE: PersonDatabase? = null
 
         fun accessToDatabase(context: Context): PersonDatabase? {
             if (INSTANCE == null) {
