@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'com.halil.ozel.roomexample'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.halil.ozel.roomexample"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
